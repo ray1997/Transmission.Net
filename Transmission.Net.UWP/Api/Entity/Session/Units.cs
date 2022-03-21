@@ -19,7 +19,7 @@ namespace Transmission.Net.Api.Entity.Session
         /// Speed units
         /// </summary>
         [JsonProperty("speed-units")]
-        public string[]? SpeedUnits { get; set; }
+        public string[] SpeedUnits { get; set; }
 
         /// <summary>
         /// Speed bytes
@@ -31,7 +31,7 @@ namespace Transmission.Net.Api.Entity.Session
         /// Size units
         /// </summary>
         [JsonProperty("size-units")]
-        public string[]? SizeUnits { get; set; }
+        public string[] SizeUnits { get; set; }
 
         /// <summary>
         /// Size bytes
@@ -43,7 +43,7 @@ namespace Transmission.Net.Api.Entity.Session
         /// Memory units
         /// </summary>
         [JsonProperty("memory-units")]
-        public string[]? MemoryUnits { get; set; }
+        public string[] MemoryUnits { get; set; }
 
         /// <summary>
         /// Memory bytes

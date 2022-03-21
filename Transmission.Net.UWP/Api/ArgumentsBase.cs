@@ -20,7 +20,7 @@ namespace Transmission.Net.Api
             set => SetValue(name, value);
         }
 
-        private void SetValue(string name, object? value)
+        private void SetValue(string name, object value)
         {
             if (value == null)
             {

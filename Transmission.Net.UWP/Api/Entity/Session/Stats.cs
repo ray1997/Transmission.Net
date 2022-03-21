@@ -49,13 +49,13 @@ namespace Transmission.Net.Api.Entity.Session
         /// Cumulative stats
         /// </summary>
         [JsonProperty("cumulative-stats")]
-        public CommonStats? CumulativeStats { get; set; }
+        public CommonStats CumulativeStats { get; set; }
 
         /// <summary>
         /// Current stats
         /// </summary>
         [JsonProperty("current-stats")]
-        public CommonStats? CurrentStats { get; set; }
+        public CommonStats CurrentStats { get; set; }
     }
 
     /// <summary>

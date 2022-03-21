@@ -28,6 +28,6 @@ namespace Transmission.Net.Core.Entity.Torrent
         /// This file's name. Includes the full subpath in the torrent.
         /// </summary>
         [JsonProperty("name")]
-        string? Name { get; set; }
+        string Name { get; set; }
     }
 }

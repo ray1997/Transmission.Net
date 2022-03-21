@@ -17,22 +17,22 @@ namespace Transmission.Net.Api
         /// <summary>
         /// Pointer to a string of one or more cookies.
         /// </summary>
-        public string? Cookies { get => GetValue<string?>("cookies"); set => this["cookies"] = value; }
+        public string Cookies { get => GetValue<string>("cookies"); set => this["cookies"] = value; }
 
         /// <summary>
         /// Path to download the torrent to
         /// </summary>
-        public string? DownloadDirectory { get => GetValue<string?>("download-dir"); set => this["download-dir"] = value; }
+        public string DownloadDirectory { get => GetValue<string>("download-dir"); set => this["download-dir"] = value; }
 
         /// <summary>
         /// filename (relative to the server) or URL of the .torrent file (Priority than the metadata)
         /// </summary>
-        public string? Filename { get => GetValue<string?>("filename"); set => this["filename"] = value; }
+        public string Filename { get => GetValue<string>("filename"); set => this["filename"] = value; }
 
         /// <summary>
         /// base64-encoded .torrent content
         /// </summary>
-        public string? Metainfo { get => GetValue<string?>("metainfo"); set => this["metainfo"] = value; }
+        public string Metainfo { get => GetValue<string>("metainfo"); set => this["metainfo"] = value; }
 
         /// <summary>
         /// if true, don't start the torrent

@@ -16,13 +16,13 @@ namespace Transmission.Net.Core.Entity.Torrent
         /// Address
         /// </summary>
         [JsonProperty("address")]
-        string? Address { get; set; }
+        string Address { get; set; }
 
         /// <summary>
         /// Client name
         /// </summary>
         [JsonProperty("clientName")]
-        string? ClientName { get; set; }
+        string ClientName { get; set; }
 
         /// <summary>
         /// Client is choked
@@ -40,7 +40,7 @@ namespace Transmission.Net.Core.Entity.Torrent
         /// Flag string
         /// </summary>
         [JsonProperty("flagStr")]
-        string? FlagStr { get; set; }
+        string FlagStr { get; set; }
 
         /// <summary>
         /// Is downloading from

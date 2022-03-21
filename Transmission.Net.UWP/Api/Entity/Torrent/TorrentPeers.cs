@@ -12,11 +12,11 @@ namespace Transmission.Net.Api.Entity.Torrent
 
     public class TorrentPeers : ITorrentPeers
     {
-        public string? Address { get; set; }
-        public string? ClientName { get; set; }
+        public string Address { get; set; }
+        public string ClientName { get; set; }
         public bool? ClientIsChoked { get; set; }
         public bool? ClientIsInterested { get; set; }
-        public string? FlagStr { get; set; }
+        public string FlagStr { get; set; }
         public bool? IsDownloadingFrom { get; set; }
         public bool? IsEncrypted { get; set; }
         public bool? IsUploadingTo { get; set; }

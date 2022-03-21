@@ -22,7 +22,7 @@ namespace Transmission.Net {
     /// </summary>
     public class TransmissionClient : ITransmissionClient
     {
-        private readonly string? _authorization;
+        private readonly string _authorization;
         private readonly bool _needAuthorization;
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Transmission.Net {
         /// <summary>
         /// Session ID
         /// </summary>
-        public string? SessionID { get; private set; }
+        public string SessionID { get; private set; }
 
         /// <summary>
         /// Current Tag
@@ -57,7 +57,7 @@ namespace Transmission.Net {
         /// <param name="sessionID">Session ID</param>
         /// <param name="login">Login</param>
         /// <param name="password">Password</param>
-        public TransmissionClient(string url, string? sessionID = null, string? login = null, string? password = null)
+        public TransmissionClient(string url, string sessionID = null, string login = null, string password = null)
         {
             Url = url;
             SessionID = sessionID;
@@ -97,7 +97,7 @@ namespace Transmission.Net {
         /// Get session stat
         /// </summary>
         /// <returns>Session stat</returns>
-        public async Task<Stats?> GetSessionStatisticAsync()
+        public async Task<Stats> GetSessionStatisticAsync()
         {
             var request = new TransmissionRequest("session-stats");
             var response = await SendRequestAsync(request);
@@ -110,7 +110,7 @@ namespace Transmission.Net {
         /// </summary>
         /// <returns>Session information</returns>
         //TODO: support optional "fields" argument
-        public async Task<SessionInfo?> GetSessionInformationAsync()
+        public async Task<SessionInfo> GetSessionInformationAsync()
         {
             var request = new TransmissionRequest("session-get");
             var response = await SendRequestAsync(request);
@@ -126,7 +126,7 @@ namespace Transmission.Net {
         /// Add torrent (API: torrent-add)
         /// </summary>
         /// <returns>Torrent info (ID, Name and HashString)</returns>
-        public async Task<NewTorrentInfo?> TorrentAddAsync(NewTorrent torrent)
+        public async Task<NewTorrentInfo> TorrentAddAsync(NewTorrent torrent)
         {
             if (string.IsNullOrWhiteSpace(torrent.Metainfo) && string.IsNullOrWhiteSpace(torrent.Filename))
             {
@@ -142,7 +142,7 @@ namespace Transmission.Net {
                 return null;
             }
 
-            NewTorrentInfo? result = null;
+            NewTorrentInfo result = null;
 
             if (jObject.TryGetValue("torrent-duplicate", out var value) || jObject.TryGetValue("torrent-added", out value))
             {
@@ -163,7 +163,7 @@ namespace Transmission.Net {
         }
 
         /// <inheritdoc/>
-        public async Task<TorrentsResult?> TorrentGetAsync(int[]? ids = null, params string[] fields)
+        public async Task<TorrentsResult> TorrentGetAsync(int[] ids = null, params string[] fields)
         {
             var arguments = new Dictionary<string, object>
         {
@@ -188,7 +188,7 @@ namespace Transmission.Net {
         /// </summary>
         /// <param name="fields">Fields of torrent (empty for <see cref="TorrentFields.ALL_FIELDS"/>)</param>
         /// <returns></returns>
-        public async Task<TorrentsResult?> TorrentGetAsync(params string[] fields)
+        public async Task<TorrentsResult> TorrentGetAsync(params string[] fields)
         {
             return await TorrentGetAsync(null, fields);
         }
@@ -200,7 +200,7 @@ namespace Transmission.Net {
         /// <param name="id">ID of torrent</param>
         /// <param name="fields">Fields of torrent (empty for <see cref="TorrentFields.ALL_FIELDS"/>)</param>
         /// <returns>Torrents info</returns>
-        public async Task<TorrentsResult?> TorrentGetAsync(int id, params string[] fields)
+        public async Task<TorrentsResult> TorrentGetAsync(int id, params string[] fields)
         {
             return await TorrentGetAsync(new int[] { id }, fields);
         }
@@ -377,7 +377,7 @@ namespace Transmission.Net {
         /// <param name="id">The torrent whose path will be renamed</param>
         /// <param name="path">The path to the file or folder that will be renamed</param>
         /// <param name="name">The file or folder's new name</param>
-        public async Task<RenameTorrentInfo?> TorrentRenamePathAsync(int id, string path, string name)
+        public async Task<RenameTorrentInfo> TorrentRenamePathAsync(int id, string path, string name)
         {
             var arguments = new Dictionary<string, object>
         {
@@ -416,13 +416,13 @@ namespace Transmission.Net {
         /// See if your incoming peer port is accessible from the outside world (API: port-test)
         /// </summary>
         /// <returns>Accessible state</returns>
-        public async Task<bool?> PortTestAsync()
+        public async Task<bool> PortTestAsync()
         {
             var request = new TransmissionRequest("port-test");
             var response = await SendRequestAsync(request);
 
             var data = response.Deserialize<JObject>();
-            var result = (bool?)data?.GetValue("port-is-open");
+            var result = (bool)data?.GetValue("port-is-open");
             return result;
         }
 
@@ -430,13 +430,13 @@ namespace Transmission.Net {
         /// Update blocklist (API: blocklist-update)
         /// </summary>
         /// <returns>Blocklist size</returns>
-        public async Task<int?> BlocklistUpdateAsync()
+        public async Task<int> BlocklistUpdateAsync()
         {
             var request = new TransmissionRequest("blocklist-update");
             var response = await SendRequestAsync(request);
 
             var data = response.Deserialize<JObject>();
-            var result = (int?)data?.GetValue("blocklist-size");
+            var result = (int)data?.GetValue("blocklist-size");
             return result;
         }
 
@@ -444,7 +444,7 @@ namespace Transmission.Net {
         /// Get free space is available in a client-specified folder.
         /// </summary>
         /// <param name="path">The directory to query</param>
-        public async Task<long?> FreeSpaceAsync(string path)
+        public async Task<long> FreeSpaceAsync(string path)
         {
             var arguments = new Dictionary<string, object>
         {
@@ -455,7 +455,7 @@ namespace Transmission.Net {
             var response = await SendRequestAsync(request);
 
             var data = response.Deserialize<JObject>();
-            var result = (long?)data?.GetValue("size-bytes");
+            var result = (long)data?.GetValue("size-bytes");
             return result;
         }
 
@@ -463,7 +463,7 @@ namespace Transmission.Net {
 
         private async Task<TransmissionResponse> SendRequestAsync(TransmissionRequest request)
         {
-            TransmissionResponse? result;
+            TransmissionResponse result;
 
             request.Tag = ++CurrentTag;
 

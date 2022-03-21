@@ -36,7 +36,7 @@ namespace Transmission.Net.Core.Entity
         DateTime? AddedDate { get; set; }
 
         [JsonProperty(COMMENT)]
-        string? Comment { get; set; }
+        string Comment { get; set; }
 
         /// <summary>
         /// Byte count of all the corrupt data you've ever downloaded for
@@ -47,7 +47,7 @@ namespace Transmission.Net.Core.Entity
         int? CorruptEver { get; set; }
 
         [JsonProperty(CREATOR)]
-        string? Creator { get; set; }
+        string Creator { get; set; }
 
         [JsonProperty(DATE_CREATED), JsonConverter(typeof(UnixDateTimeConverter))]
         DateTime? DateCreated { get; set; }
@@ -66,7 +66,7 @@ namespace Transmission.Net.Core.Entity
         DateTime? DoneDate { get; set; }
 
         [JsonProperty(DOWNLOAD_DIR)]
-        string? DownloadDir { get; set; }
+        string DownloadDir { get; set; }
 
         /// <summary>
         /// Byte count of all the non-corrupt data you've ever downloaded
@@ -99,7 +99,7 @@ namespace Transmission.Net.Core.Entity
         /// <seealso cref="Error"/>
         /// </summary>
         [JsonProperty(ERROR_STRING)]
-        string? ErrorString { get; set; }
+        string ErrorString { get; set; }
 
         /// <summary>
         /// If downloading, estimated number of seconds left until the torrent is done.
@@ -118,13 +118,13 @@ namespace Transmission.Net.Core.Entity
         int? FileCount { get; set; }
 
         [JsonProperty(FILES)]
-        ITorrentFile[]? Files { get; set; }
+        ITorrentFile[] Files { get; set; }
 
         [JsonProperty(FILE_STATS)]
-        ITorrentFileStats[]? FileStats { get; set; }
+        ITorrentFileStats[] FileStats { get; set; }
 
         [JsonProperty(HASH_STRING)]
-        string? HashString { get; set; }
+        string HashString { get; set; }
 
         /// <summary>
         /// Byte count of all the partial piece data we have for this torrent.
@@ -168,7 +168,7 @@ namespace Transmission.Net.Core.Entity
         long? LeftUntilDone { get; set; }
 
         [JsonProperty(MAGNET_LINK)]
-        string? MagnetLink { get; set; }
+        string MagnetLink { get; set; }
 
         /// <summary>
         /// Time when one or more of the torrent's trackers will
@@ -191,10 +191,10 @@ namespace Transmission.Net.Core.Entity
         double? MetadataPercentComplete { get; set; }
 
         [JsonProperty(NAME)]
-        string? Name { get; set; }
+        string Name { get; set; }
 
         [JsonProperty(PEERS)]
-        ITorrentPeers[]? Peers { get; set; }
+        ITorrentPeers[] Peers { get; set; }
 
         /// <summary>
         /// Number of peers that we're connected to
@@ -207,7 +207,7 @@ namespace Transmission.Net.Core.Entity
         /// or from incoming connections, or from our resume file.
         /// </summary>
         [JsonProperty(PEERS_FROM)]
-        ITorrentPeersFrom? PeersFrom { get; set; }
+        ITorrentPeersFrom PeersFrom { get; set; }
 
         /// <summary>
         /// Number of peers that we're sending data to.
@@ -239,7 +239,7 @@ namespace Transmission.Net.Core.Entity
         double? PercentDone { get; set; }
 
         [JsonProperty(PIECES)]
-        string? Pieces { get; set; }
+        string Pieces { get; set; }
 
         [JsonProperty(PIECE_COUNT)]
         int? PieceCount { get; set; }
@@ -251,14 +251,14 @@ namespace Transmission.Net.Core.Entity
         /// Array of <see langword="Priority"/>, with each one corresponding to a file.
         /// </summary>
         [JsonProperty(PRIORITIES)]
-        Priority[]? Priorities { get; set; }
+        Priority[] Priorities { get; set; }
 
         /// <summary>
         /// Return the mime-type (e.g. "audio/x-flac") that matches more of the
         /// torrent's content than any other mime-type. 
         /// </summary>
         [JsonProperty(PRIMARY_MIME_TYPE)]
-        string? PrimaryMimeType { get; set; }
+        string PrimaryMimeType { get; set; }
 
         /// <summary>
         /// Download speed (B/s)
@@ -317,10 +317,10 @@ namespace Transmission.Net.Core.Entity
         TorrentStatus? Status { get; set; }
 
         [JsonProperty(TRACKERS)]
-        ITorrentTracker[]? Trackers { get; set; }
+        ITorrentTracker[] Trackers { get; set; }
 
         [JsonProperty(TRACKER_STATS)]
-        ITorrentTrackerStats[]? TrackerStats { get; set; }
+        ITorrentTrackerStats[] TrackerStats { get; set; }
 
         /// <summary>
         /// Total size of the torrent, including unwanted files.
@@ -332,7 +332,7 @@ namespace Transmission.Net.Core.Entity
         /// Path to the torrent file in the server
         /// </summary>
         [JsonProperty(TORRENT_FILE)]
-        string? TorrentFile { get; set; }
+        string TorrentFile { get; set; }
 
         /// <summary>
         /// Byte count of all data you've ever uploaded for this torrent.
@@ -350,10 +350,10 @@ namespace Transmission.Net.Core.Entity
         /// An array of booleans, with each item corresponding to a file
         /// </summary>
         [JsonProperty(WANTED)]
-        bool[]? Wanted { get; set; }
+        bool[] Wanted { get; set; }
 
         [JsonProperty(WEBSEEDS)]
-        string[]? Webseeds { get; set; }
+        string[] Webseeds { get; set; }
 
         /// <summary>
         /// Number of webseeds that are sending data to us.

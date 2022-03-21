@@ -8,6 +8,6 @@ namespace Transmission.Net.Api.Entity.Torrent
     {
         public long? BytesCompleted { get; set; }
         public long? Length { get; set; }
-        public string? Name { get; set; }
+        public string Name { get; set; }
     }
 }

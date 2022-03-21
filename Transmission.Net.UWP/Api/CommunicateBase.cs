@@ -31,7 +31,7 @@ namespace Transmission.Net.Api
         /// Convert to JSON string
         /// </summary>
         /// <returns></returns>
-        public virtual string? ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

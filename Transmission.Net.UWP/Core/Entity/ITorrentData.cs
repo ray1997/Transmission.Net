@@ -39,7 +39,7 @@ namespace Transmission.Net.Core.Entity
         /// Labels
         /// </summary>
         [JsonProperty(LABELS)]
-        string[]? Labels { get; set; }
+        string[] Labels { get; set; }
 
         /// <summary>
         /// Maximum number of peers
@@ -84,7 +84,7 @@ namespace Transmission.Net.Core.Entity
         /// line between tiers
         /// </summary>
         [JsonProperty(TRACKER_LIST)]
-        string? TrackerList { get; set; }
+        string TrackerList { get; set; }
 
         /// <summary>
         /// Maximum upload speed (KBps)

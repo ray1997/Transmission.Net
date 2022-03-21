@@ -18,30 +18,30 @@ namespace Transmission.Net.Core.Entity
     {
         /// <inheritdoc cref="ITorrentTracker.Announce"/>
         [JsonProperty("announce")]
-        string? Announce { get; set; }
+        string Announce { get; set; }
 
         /// <inheritdoc cref="ITorrentTracker.Scrape"/>
         [JsonProperty("scrape")]
-        string? Scrape { get; set; }
+        string Scrape { get; set; }
 
         /// <summary>
         /// Uniquely-identifying tracker name ({host}:{port})
         /// </summary>
         [JsonProperty("host")]
-        string? Host { get; set; }
+        string Host { get; set; }
 
 
         /// <summary>
         /// If <see cref="HasAnnounced"/>, the human-readable result of latest announce
         /// </summary>
         [JsonProperty("lastAnnounceResult")]
-        string? LastAnnounceResult { get; set; }
+        string LastAnnounceResult { get; set; }
 
         /// <summary>
         /// If <see cref="HasScraped"/>, the human-readable result of the latest scrape
         /// </summary>
         [JsonProperty("lastScrapeResult")]
-        string? LastScrapeResult { get; set; }
+        string LastScrapeResult { get; set; }
 
 
         /// <summary>
