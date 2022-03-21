@@ -1,35 +1,43 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
-namespace Transmission.Net.Api.Entity;
-
-/// <summary>
-/// Information of added torrent
-/// </summary>
-public class NewTorrentInfo
+namespace Transmission.Net.Api.Entity
 {
-    public NewTorrentInfo(int id, string name, string hashString)
+    /// <summary>
+    /// Information of added torrent
+    /// </summary>
+    public class NewTorrentInfo
     {
-        Id = id;
-        Name = name;
-        HashString = hashString;
+        public NewTorrentInfo(int id, string name, string hashString)
+        {
+            Id = id;
+            Name = name;
+            HashString = hashString;
+        }
+
+        /// <summary>
+        /// Torrent ID
+        /// </summary>
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Torrent name
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Torrent Hash
+        /// </summary>
+        [JsonProperty("hashString")]
+        public string HashString { get; set; }
+
     }
-
-    /// <summary>
-    /// Torrent ID
-    /// </summary>
-    [JsonProperty("id")]
-    public int Id { get; set; }
-
-    /// <summary>
-    /// Torrent name
-    /// </summary>
-    [JsonProperty("name")]
-    public string Name { get; set; }
-
-    /// <summary>
-    /// Torrent Hash
-    /// </summary>
-    [JsonProperty("hashString")]
-    public string HashString { get; set; }
-
 }

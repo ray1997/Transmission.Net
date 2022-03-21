@@ -1,40 +1,49 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
-namespace Transmission.Net.Api;
-
-/// <summary>
-/// Base class for request/response
-/// </summary>
-public abstract class CommunicateBase
+namespace Transmission.Net.Api
 {
-    /// <summary>
-    /// Data
-    /// </summary>
-    [JsonProperty("arguments")]
-    public Dictionary<string, object>? Arguments;
 
     /// <summary>
-    /// Number (id)
+    /// Base class for request/response
     /// </summary>
-    [JsonProperty("tag")]
-    public int? Tag;
-
-    /// <summary>
-    /// Convert to JSON string
-    /// </summary>
-    /// <returns></returns>
-    public virtual string? ToJson()
+    public abstract class CommunicateBase
     {
-        return JsonConvert.SerializeObject(this, Formatting.Indented);
-    }
+        /// <summary>
+        /// Data
+        /// </summary>
+        [JsonProperty("arguments")]
+        public Dictionary<string, object>? Arguments;
 
-    /// <summary>
-    /// Deserialize to class
-    /// </summary>
-    /// <returns></returns>
-    public T? Deserialize<T>()
-    {
-        var argumentsString = JsonConvert.SerializeObject(Arguments);
-        return JsonConvert.DeserializeObject<T>(argumentsString);
+        /// <summary>
+        /// Number (id)
+        /// </summary>
+        [JsonProperty("tag")]
+        public int? Tag;
+
+        /// <summary>
+        /// Convert to JSON string
+        /// </summary>
+        /// <returns></returns>
+        public virtual string? ToJson()
+        {
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
+        }
+
+        /// <summary>
+        /// Deserialize to class
+        /// </summary>
+        /// <returns></returns>
+        public T Deserialize<T>()
+        {
+            var argumentsString = JsonConvert.SerializeObject(Arguments);
+            return JsonConvert.DeserializeObject<T>(argumentsString);
+        }
     }
 }

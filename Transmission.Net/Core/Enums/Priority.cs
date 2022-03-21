@@ -1,8 +1,10 @@
-﻿namespace Transmission.Net.Core.Enums;
-
-public enum Priority
+﻿namespace Transmission.Net.Core.Enums
 {
-    Low = -1,
-    Normal = 0,
-    High = 1
+
+    public enum Priority
+    {
+        Low = -1,
+        Normal = 0,
+        High = 1
+    }
 }

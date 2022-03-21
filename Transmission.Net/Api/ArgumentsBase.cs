@@ -1,35 +1,44 @@
-﻿namespace Transmission.Net.Api;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
-/// <summary>
-/// Absract class for arguments
-/// </summary>
-public abstract class ArgumentsBase
+namespace Transmission.Net.Api
 {
-    internal Dictionary<string, object> Data = new();
-
-    internal object? this[string name]
+    /// <summary>
+    /// Absract class for arguments
+    /// </summary>
+    public abstract class ArgumentsBase
     {
-        set => SetValue(name, value);
-    }
+        internal Dictionary<string, object> Data = new Dictionary<string, object>();
 
-    private void SetValue(string name, object? value)
-    {
-        if (value == null)
+        internal object? this[string name]
         {
-            Data.Remove(name);
+            set => SetValue(name, value);
         }
-        else if (Data.ContainsKey(name))
-        {
-            Data[name] = value;
-        }
-        else
-        {
-            Data.Add(name, value);
-        }
-    }
 
-    internal T? GetValue<T>(string name)
-    {
-        return Data.ContainsKey(name) ? (T)Data[name] : default;
+        private void SetValue(string name, object? value)
+        {
+            if (value == null)
+            {
+                Data.Remove(name);
+            }
+            else if (Data.ContainsKey(name))
+            {
+                Data[name] = value;
+            }
+            else
+            {
+                Data.Add(name, value);
+            }
+        }
+
+        internal T GetValue<T>(string name)
+        {
+            return Data.ContainsKey(name) ? (T)Data[name] : default;
+        }
     }
 }
